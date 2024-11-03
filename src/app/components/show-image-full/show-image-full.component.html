@@ -1,0 +1,11 @@
+<div class="image-modal-container">
+  <div class="loading-spinner" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="image-wrapper" [class.hidden]="isLoading">
+    <img [src]="data.imageUrl" (load)="onImageLoad()" class="full-image">
+  </div>
+  <button mat-icon-button class="close-button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

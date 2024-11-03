@@ -1,0 +1,218 @@
+[
+    {
+        "id": 1,
+        "name": "Spider-Man",
+        "alterEgo": "Peter Parker",
+        "power": "Spider abilities",
+        "universe": "Marvel",
+        "image": "https://cdn.pixabay.com/photo/2020/09/11/00/06/spiderman-5561671_1280.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Batman",
+        "alterEgo": "Bruce Wayne",
+        "power": "Martial arts",
+        "universe": "DC",
+        "image": "https://cdn.pixabay.com/photo/2024/01/15/11/36/batman-8510026_1280.png"
+    },
+    {
+        "id": 3,
+        "name": "Superman",
+        "alterEgo": "Clark Kent",
+        "power": "Superhuman strength, flight, invulnerability",
+        "universe": "DC",
+        "image": "https://cdn.pixabay.com/photo/2023/07/27/13/52/ai-generated-8153440_640.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Wonder Woman",
+        "alterEgo": "Diana Prince",
+        "power": "Superhuman strength, agility, flight",
+        "universe": "DC",
+        "image": "https://cdn.pixabay.com/photo/2023/06/13/10/31/ai-generated-8060635_1280.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Iron Man",
+        "alterEgo": "Tony Stark",
+        "power": "Powered armor suit",
+        "universe": "Marvel",
+        "image": "https://images.hdqwalls.com/wallpapers/iron-man-2018-4k-5k-x0.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Captain America",
+        "alterEgo": "Steve Rogers",
+        "power": "Enhanced strength, agility, endurance",
+        "universe": "Marvel",
+        "image": "https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2019/04/hipertextual-que-estaria-fabricado-escudo-capitan-america-si-fuese-real-2019887960.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Thor",
+        "alterEgo": "Thor Odinson",
+        "power": "God of Thunder, superhuman strength, control over lightning",
+        "universe": "Marvel",
+        "image": "https://wallpaperaccess.com/full/409229.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Hulk",
+        "alterEgo": "Bruce Banner",
+        "power": "Superhuman strength, invulnerability",
+        "universe": "Marvel",
+        "image": "https://wallpaperaccess.com/full/2857423.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Black Widow",
+        "alterEgo": "Natasha Romanoff",
+        "power": "Expert spy, martial artist",
+        "universe": "Marvel",
+        "image": "https://wallpapercave.com/wp/wp2882217.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Aquaman",
+        "alterEgo": "Arthur Curry",
+        "power": "Control over aquatic life, superhuman strength",
+        "universe": "DC",
+        "image": "https://img.europapress.es/fotoweb/fotonoticia_20231220183940_1200.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Flash",
+        "alterEgo": "Barry Allen",
+        "power": "Super speed",
+        "universe": "DC",
+        "image": "https://i.pinimg.com/originals/56/6a/40/566a40ad8b4e94301a099c7c020398d9.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Green Lantern",
+        "alterEgo": "Hal Jordan",
+        "power": "Power ring that grants flight, constructs, and other abilities",
+        "universe": "DC",
+        "image": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2022/06/hal-jordan-como-green-lantern-2725641.jpg"
+    },
+    {
+        "id": 13,
+        "name": "Wolverine",
+        "alterEgo": "Logan",
+        "power": "Regenerative healing, adamantium claws",
+        "universe": "Marvel",
+        "image": "https://images.hdqwalls.com/download/wolverine-on-bike-is-3840x2160.jpg"
+    },
+    {
+        "id": 14,
+        "name": "Doctor Strange",
+        "alterEgo": "Stephen Strange",
+        "power": "Mastery of magic",
+        "universe": "Marvel",
+        "image": "https://images.hdqwalls.com/download/2020-doctor-strange-4k-8v-3840x2400.jpg"
+    },
+    {
+        "id": 15,
+        "name": "Black Panther",
+        "alterEgo": "T'Challa",
+        "power": "Enhanced strength, agility, senses",
+        "universe": "Marvel",
+        "image": "https://i.pinimg.com/originals/72/9b/a7/729ba72df922dcb33bc382724ca8422f.jpg"
+    },
+    {
+        "id": 16,
+        "name": "Cyborg",
+        "alterEgo": "Victor Stone",
+        "power": "Cybernetic enhancements",
+        "universe": "DC",
+        "image": "https://pbs.twimg.com/media/FkYOh1xWIAEy_2x.jpg"
+    },
+    {
+        "id": 17,
+        "name": "Scarlet Witch",
+        "alterEgo": "Wanda Maximoff",
+        "power": "Reality warping, magic",
+        "universe": "Marvel",
+        "image": "https://imagecache.aitool.ai/xG1nkqKTMzGDvpLrqFT7WA/07266658-f305-4172-b5af-b720adf2d278/width=450/1227997.jpeg"
+    },
+    {
+        "id": 18,
+        "name": "Green Arrow",
+        "alterEgo": "Oliver Queen",
+        "power": "Expert archer, martial artist",
+        "universe": "DC",
+        "image": "https://wallpaperboat.com/wp-content/uploads/2020/05/15/41695/green-arrow-15.jpg"
+    },
+    {
+        "id": 19,
+        "name": "Daredevil",
+        "alterEgo": "Matt Murdock",
+        "power": "Enhanced senses, martial arts",
+        "universe": "Marvel",
+        "image": "https://cdnb.artstation.com/p/assets/images/images/042/694/335/large/lucas-freitas-zgenw014z6kz-9.jpg"
+    },
+    {
+        "id": 20,
+        "name": "Ant-Man",
+        "alterEgo": "Scott Lang",
+        "power": "Size manipulation, communication with insects",
+        "universe": "Marvel",
+        "image": "https://jonnegroni.com/wp-content/uploads/2015/07/ant-man2.jpg"
+    },
+    {
+        "id": 21,
+        "name": "Hawkeye",
+        "alterEgo": "Clint Barton",
+        "power": "Expert archer, martial artist",
+        "universe": "Marvel",
+        "image": "https://static1.colliderimages.com/wordpress/wp-content/uploads/2021/11/hawkeye-movies-in-order.jpg"
+    },
+    {
+        "id": 22,
+        "name": "Vision",
+        "alterEgo": "Vision",
+        "power": "Density manipulation, superhuman strength",
+        "universe": "Marvel",
+        "image": "https://i.pinimg.com/originals/63/9e/59/639e5934ec20c8d67ed06d84f5aeab1e.jpg"
+    },
+    {
+        "id": 23,
+        "name": "Star-Lord",
+        "alterEgo": "Peter Quill",
+        "power": "Expert marksman, skilled hand-to-hand combatant",
+        "universe": "Marvel",
+        "image": "https://cdn.mos.cms.futurecdn.net/cre7f67zTpFMQFCTUCU5o8-1200-80.jpg"
+    },
+    {
+        "id": 24,
+        "name": "Shazam",
+        "alterEgo": "Billy Batson",
+        "power": "Superhuman strength, speed, flight",
+        "universe": "DC",
+        "image": "https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/04/04095039/Shazam_ok.jpg"
+    },
+    {
+        "id": 25,
+        "name": "Supergirl",
+        "alterEgo": "Kara Zor-El",
+        "power": "Superhuman strength, flight, invulnerability",
+        "universe": "DC",
+        "image": "https://i.pinimg.com/originals/8a/de/25/8ade2533789ce8008e6681fd6ab28e3d.jpg"
+    },
+    {
+        "id": 26,
+        "name": "Nightwing",
+        "alterEgo": "Dick Grayson",
+        "power": "Expert acrobat, martial artist",
+        "universe": "DC",
+        "image": "https://www.traileraddict.com/article/wp-content/uploads/2017/11/nightwing-poster-116663.v1.jpg"
+    },
+    {
+        "id": 27,
+        "name": "Storm",
+        "alterEgo": "Ororo Munroe",
+        "power": "Weather manipulation",
+        "universe": "Marvel",
+        "image": "https://i.pinimg.com/originals/fb/08/f9/fb08f9f396b1ed49d4e9b8d43850fd08.jpg"
+    }
+]

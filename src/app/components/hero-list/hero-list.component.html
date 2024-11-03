@@ -1,0 +1,80 @@
+<div class="hero-list-container">
+  <mat-form-field class="search-field">
+    <input matInput [formControl]="searchTerm" placeholder="Buscar héroe...">
+  </mat-form-field>
+
+  <div class="action-buttons">
+    <button mat-raised-button color="warn" (click)="deleteSelectedHeroes()" [disabled]="!selection.hasValue()">
+      <mat-icon>delete</mat-icon> Eliminar Seleccionados
+    </button>
+
+    <button mat-raised-button color="primary" (click)="addHero()">
+      <mat-icon>add</mat-icon> Nuevo Héroe
+    </button>
+  </div>
+
+  <mat-table [dataSource]="(paginatedHeroes$ | async) || []">
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef style="max-width: 60px;">
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let hero" style="max-width: 60px;">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(hero) : null"
+          [checked]="selection.isSelected(hero)"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef style="max-width: 70px;"> Imagen </mat-header-cell>
+      <mat-cell *matCellDef="let hero" style="max-width: 70px;">
+        <img [src]="hero.image || 'assets/png/hero.png'" alt="{{hero.name}}" class="thumbnail"
+          (click)="showImageFull(hero.image || 'assets/png/hero.png')">
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let hero"> {{hero.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="alterEgo">
+      <mat-header-cell *matHeaderCellDef> Alter Ego </mat-header-cell>
+      <mat-cell *matCellDef="let hero"> {{hero.alterEgo}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="power">
+      <mat-header-cell *matHeaderCellDef> Poder </mat-header-cell>
+      <mat-cell *matCellDef="let hero">
+        <span class="ellipsis">{{hero.power}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="universe">
+      <mat-header-cell *matHeaderCellDef style="max-width: 100px;"> Universo </mat-header-cell>
+      <mat-cell *matCellDef="let hero" style="max-width: 100px;"> {{hero.universe}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef style="max-width: 125px;"> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let hero" style="max-width: 125px;">
+        <div *ngIf="!multipleSelection">
+          <button mat-icon-button color="primary" (click)="editHero(hero)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteHero(hero)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
