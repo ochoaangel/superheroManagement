@@ -74,6 +74,8 @@ export class HeroListComponent implements OnInit {
       this.filteredHeroes$.next([...heroes]);
       this.totalItems = heroes.length;
       this.updatePaginatedHeroes();
+      this.selection.clear();
+      this.multipleSelection = false;
       this.loadingService.hide();
       this.cdr.detectChanges();
     });
@@ -180,6 +182,7 @@ export class HeroListComponent implements OnInit {
           this.selection.clear();
           this.multipleSelection = false;
           this.loadingService.hide();
+          this.cdr.detectChanges();
         });
       }
     });

@@ -16,9 +16,11 @@
   <mat-table [dataSource]="(paginatedHeroes$ | async) || []">
     <ng-container matColumnDef="select">
       <mat-header-cell *matHeaderCellDef style="max-width: 60px;">
-        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
-          [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
-      </mat-header-cell>
+        <mat-checkbox (change)="$event ? masterToggle() : null" 
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>  
+      </mat-header-cell> 
       <mat-cell *matCellDef="let hero" style="max-width: 60px;">
         <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(hero) : null"
           [checked]="selection.isSelected(hero)"></mat-checkbox>
