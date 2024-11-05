@@ -1,11 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {  provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 import { LoadingInterceptor } from './loading.interceptor';
 import { LoadingService } from '../services/loading.service';
 import { Injectable } from '@angular/core';
 
-@Injectable()
 class MockLoadingService {
   show() { }
   hide() { }
@@ -23,10 +22,11 @@ describe('LoadingInterceptor', () => {
   let httpClient: HttpClient;
   let loadingService: MockLoadingService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         {
           provide: HTTP_INTERCEPTORS,
           useClass: LoadingInterceptorWithDeps,
@@ -34,7 +34,7 @@ describe('LoadingInterceptor', () => {
         },
         { provide: LoadingService, useClass: MockLoadingService }
       ]
-    });
+    }).compileComponents();
 
     httpMock = TestBed.inject(HttpTestingController);
     httpClient = TestBed.inject(HttpClient);

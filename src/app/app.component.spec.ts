@@ -3,7 +3,6 @@ import { AppComponent } from './app.component';
 import { LoadingService } from './services/loading.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -19,7 +18,7 @@ describe('AppComponent', () => {
     titleServiceSpy = jasmine.createSpyObj('Title', ['setTitle']);
 
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, CommonModule, MatToolbarModule, MatProgressSpinnerModule, AppComponent],
+      imports: [CommonModule, MatToolbarModule, MatProgressSpinnerModule, AppComponent],
       providers: [
         { provide: LoadingService, useValue: loadingServiceSpy },
         { provide: Title, useValue: titleServiceSpy }
