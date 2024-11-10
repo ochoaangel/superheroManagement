@@ -1,86 +1,89 @@
-<form [formGroup]="heroForm" (ngSubmit)="onSubmit()" style="color: white;">
-  <div style="width: 100%; text-align: center;">
-    <h2 style="color: white;">{{mode === 'add' ? 'Agrega un nuevo héroe' : 'Editar Héroe'}}</h2>
-  </div>
-  <div>
-    <div *ngIf="!heroForm.get('image')?.value"
-      style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-      <div style="display: flex; flex-direction: column; position: relative;">
-        <div class="thumbnail thumbnail-no" alt="Agrega Imagen"></div>
-        <div
-          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; text-align: center;">
-          Imagen acá
+
+<div class="main-div"> 
+  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="custom-dialog-container">
+    <div style="width: 100%; text-align: center;">
+      <h2 style="color: white;">{{mode === 'add' ? 'Agrega un nuevo héroe' : 'Editar Héroe'}}</h2>
+    </div>
+    <div>
+      <div *ngIf="!heroForm.get('image')?.value"
+        style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; position: relative;">
+          <div class="thumbnail thumbnail-no" alt="Agrega Imagen"></div>
+          <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; text-align: center;">
+            Imagen acá
+          </div>
+          <div (click)="triggerFileInput($event)" style="position: absolute; bottom: 0; right: 0;">
+            <button mat-fab aria-label="add" type="button"
+              style="width: 35px; height: 35px; background-color: #5ed120; color: white">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
         </div>
-        <div (click)="triggerFileInput($event)" style="position: absolute; bottom: 0; right: 0;">
-          <button mat-fab aria-label="add" type="button"
-            style="width: 35px; height: 35px; background-color: #5ed120; color: white">
-            <mat-icon>add</mat-icon>
-          </button>
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
+      </div>
+  
+      <div *ngIf="heroForm.get('image')?.value"
+        style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; position: relative;">
+          <img *ngIf="heroForm.get('image')?.value" [src]="heroForm.get('image')?.value" alt="Imagen del héroe"
+            class="thumbnail thumbnail-yes" (click)="showImageFull(heroForm.get('image')?.value)">
+          <div (click)="removeImage($event)" style="position: absolute; bottom: 0; right: 0;">
+            <button mat-fab aria-label="delete" type="button" *ngIf="heroForm.get('image')?.value"
+              style="width: 35px; height: 35px; background-color: red; color: white">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
-      <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
     </div>
-
-    <div *ngIf="heroForm.get('image')?.value"
-      style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-      <div style="display: flex; flex-direction: column; position: relative;">
-        <img *ngIf="heroForm.get('image')?.value" [src]="heroForm.get('image')?.value" alt="Imagen del héroe"
-          class="thumbnail thumbnail-yes" (click)="showImageFull(heroForm.get('image')?.value)">
-        <div (click)="removeImage($event)" style="position: absolute; bottom: 0; right: 0;">
-          <button mat-fab aria-label="delete" type="button" *ngIf="heroForm.get('image')?.value"
-            style="width: 35px; height: 35px; background-color: red; color: white">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </div>
+  
+    <div style="margin-top: 20px;">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="heroForm.get('name')?.hasError('required')">
+          El nombre es requerido
+        </mat-error>
+        <mat-error *ngIf="heroForm.get('name')?.hasError('minlength')">
+          El nombre debe tener al menos 3 caracteres
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Alter Ego</mat-label>
+        <input matInput formControlName="alterEgo">
+        <mat-error *ngIf="heroForm.get('alterEgo')?.hasError('required')">
+          El alter ego es requerido
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Poder</mat-label>
+        <input matInput formControlName="power">
+        <mat-error *ngIf="heroForm.get('power')?.hasError('required')">
+          El poder es requerido
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Universo</mat-label>
+        <mat-select formControlName="universe">
+          <mat-option value="Marvel">Marvel</mat-option>
+          <mat-option value="DC">DC</mat-option>
+          <mat-option value="Otro">Otro</mat-option>
+        </mat-select>
+        <mat-error *ngIf="heroForm.get('universe')?.hasError('required')">
+          El universo es requerido
+        </mat-error>
+      </mat-form-field>
     </div>
-  </div>
-
-  <div style="margin-top: 20px;">
-    <mat-form-field appearance="fill">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="name">
-      <mat-error *ngIf="heroForm.get('name')?.hasError('required')">
-        El nombre es requerido
-      </mat-error>
-      <mat-error *ngIf="heroForm.get('name')?.hasError('minlength')">
-        El nombre debe tener al menos 3 caracteres
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Alter Ego</mat-label>
-      <input matInput formControlName="alterEgo">
-      <mat-error *ngIf="heroForm.get('alterEgo')?.hasError('required')">
-        El alter ego es requerido
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Poder</mat-label>
-      <input matInput formControlName="power">
-      <mat-error *ngIf="heroForm.get('power')?.hasError('required')">
-        El poder es requerido
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Universo</mat-label>
-      <mat-select formControlName="universe">
-        <mat-option value="Marvel">Marvel</mat-option>
-        <mat-option value="DC">DC</mat-option>
-        <mat-option value="Otro">Otro</mat-option>
-      </mat-select>
-      <mat-error *ngIf="heroForm.get('universe')?.hasError('required')">
-        El universo es requerido
-      </mat-error>
-    </mat-form-field>
-  </div>
-
-  <div class="actions">
-    <button mat-button type="button" (click)="dialogRef.close()">Cancelar</button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!heroForm.valid">
-      {{mode === 'add' ? 'Crear' : 'Actualizar'}}
-    </button>
-  </div>
-</form>
+  
+    <div class="actions">
+      <button mat-button type="button" (click)="router.navigate(['/heroes'])">Cancelar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!heroForm.valid">
+        {{mode === 'add' ? 'Crear' : 'Actualizar'}}
+      </button>
+    </div>
+  </form>
+</div>

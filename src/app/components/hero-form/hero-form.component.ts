@@ -1,16 +1,15 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeroService } from '../../services/hero.service';
+import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Hero } from '../../models/hero.model';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
 import { ShowImageFullComponent } from '../show-image-full/show-image-full.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-hero-form',
@@ -21,45 +20,65 @@ import { ShowImageFullComponent } from '../show-image-full/show-image-full.compo
 })
 export class HeroFormComponent implements OnInit {
   heroForm: FormGroup;
-  mode: 'add' | 'edit';
+  mode: 'add' | 'edit' = 'add'
+  heroId: number | null = null;
 
   constructor(
     private fb: FormBuilder,
     private heroService: HeroService,
-    private dialog: MatDialog,
-    public dialogRef: MatDialogRef<HeroFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { mode: 'add' | 'edit'; hero?: Hero }
+    private route: ActivatedRoute,
+    public router: Router,
+    private dialog: MatDialog
   ) {
-    this.mode = data.mode;
     this.heroForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       alterEgo: ['', Validators.required],
       power: ['', Validators.required],
       universe: ['', Validators.required],
-      image: [data.hero?.image || '']
+      image: ['']
     });
+    this.mode = 'add';
   }
 
   ngOnInit(): void {
-    this.initializeForm();
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      console.log('Route param id:', id); 
+      if (id && id !== 'new') {
+        this.heroId = +id;
+        this.mode = 'edit';
+        this.loadHero(this.heroId); 
+      } else {
+        this.mode = 'add';
+      }
+    });
   }
-
-  initializeForm(): void {
-    if (this.mode === 'edit' && this.data.hero) {
-      this.heroForm.patchValue(this.data.hero);
-    }
+  
+  loadHero(id: number): void {
+    this.heroService.getHeroes().subscribe(heroes => {
+      console.log('Heroes available before finding:', heroes); 
+      const hero = heroes.find(h => h.id === id);
+      console.log('Hero loaded:', hero); 
+      if (hero) {
+        this.heroForm.patchValue(hero);
+      } else {
+        this.router.navigate(['/heroes']);
+      }
+    });
   }
 
   onSubmit() {
     if (this.heroForm.valid) {
       const hero = this.heroForm.value;
-      const operation = this.mode === 'add'
-        ? this.heroService.addHero(hero)
-        : this.heroService.updateHero({ ...hero, id: this.data.hero!.id });
-
-      operation.subscribe(() => {
-        this.dialogRef.close(true);
-      });
+      if (this.mode === 'add') {
+        this.heroService.addHero(hero).subscribe(() => {
+          this.router.navigate(['/heroes']);
+        });
+      } else if (this.mode === 'edit' && this.heroId !== null) {
+        this.heroService.updateHero({ ...hero, id: this.heroId }).subscribe(() => {
+          this.router.navigate(['/heroes']);
+        });
+      }
     }
   }
 

@@ -1,5 +1,23 @@
+.main-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 10px);
+  height: calc(100% - 60px);
+  margin: 0 5px;
+}
+
 form {
   padding: 20px;
+  width: 50%;
+  min-width: 300px;
+  max-width: 600px;
+  height: 70%;
+  min-height: 300px;
+  max-height: 90%;
+  color: white;
+  flex-direction: column;
+
 
   mat-form-field {
     width: 100%;

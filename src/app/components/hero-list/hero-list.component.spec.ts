@@ -4,21 +4,19 @@ import { HeroService } from '../../services/hero.service';
 import { LoadingService } from '../../services/loading.service';
 import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Hero } from '../../models/hero.model';
-import { PageEvent } from '@angular/material/paginator';
-import { HeroFormComponent } from '../hero-form/hero-form.component';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { Router } from '@angular/router';
 import { ShowImageFullComponent } from '../show-image-full/show-image-full.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 describe('HeroListComponent', () => {
   let component: HeroListComponent;
@@ -26,11 +24,13 @@ describe('HeroListComponent', () => {
   let heroService: jasmine.SpyObj<HeroService>;
   let loadingService: jasmine.SpyObj<LoadingService>;
   let dialog: jasmine.SpyObj<MatDialog>;
+  let router: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
     const heroServiceSpy = jasmine.createSpyObj('HeroService', ['getHeroes', 'searchHeroes', 'deleteHero']);
     const loadingServiceSpy = jasmine.createSpyObj('LoadingService', ['show', 'hide']);
     const dialogSpy = jasmine.createSpyObj('MatDialog', ['open']);
+    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
       imports: [
@@ -49,13 +49,15 @@ describe('HeroListComponent', () => {
       providers: [
         { provide: HeroService, useValue: heroServiceSpy },
         { provide: LoadingService, useValue: loadingServiceSpy },
-        { provide: MatDialog, useValue: dialogSpy }
+        { provide: MatDialog, useValue: dialogSpy },
+        { provide: Router, useValue: routerSpy }
       ]
     }).compileComponents();
 
     heroService = TestBed.inject(HeroService) as jasmine.SpyObj<HeroService>;
     loadingService = TestBed.inject(LoadingService) as jasmine.SpyObj<LoadingService>;
     dialog = TestBed.inject(MatDialog) as jasmine.SpyObj<MatDialog>;
+    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
   });
 
   beforeEach(() => {
@@ -111,19 +113,15 @@ describe('HeroListComponent', () => {
     expect(component.totalItems).toBe(heroes.length);
   }));
 
-  it('should open the dialog to add a hero', () => {
-    const dialogRefSpy = jasmine.createSpyObj({ afterClosed: of(true) });
-    dialog.open.and.returnValue(dialogRefSpy);
+  it('should navigate to add hero page', () => {
     component.addHero();
-    expect(dialog.open).toHaveBeenCalled();
+    expect(router.navigate).toHaveBeenCalledWith(['/hero', 'new']);
   });
 
-  it('should open the dialog to edit a hero', () => {
+  it('should navigate to edit hero page', () => {
     const hero: Hero = { id: 1, name: 'Hero 1', alterEgo: 'Alter Ego 1', power: 'Power 1', universe: 'Universe 1' };
-    const dialogRefSpy = jasmine.createSpyObj({ afterClosed: of(true) });
-    dialog.open.and.returnValue(dialogRefSpy);
     component.editHero(hero);
-    expect(dialog.open).toHaveBeenCalledWith(HeroFormComponent, jasmine.any(Object));
+    expect(router.navigate).toHaveBeenCalledWith(['/hero', hero.id]);
   });
 
   it('should open the dialog to confirm hero deletion', () => {
@@ -188,7 +186,4 @@ describe('HeroListComponent', () => {
       maxHeight: '80vh'
     });
   });
-
-
-
 });

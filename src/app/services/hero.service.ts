@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../models/hero.model';
-import { Observable, BehaviorSubject } from 'rxjs';
-
+import { Observable, BehaviorSubject, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,34 +12,52 @@ export class HeroService {
     this.loadInitialHeroes();
   }
 
-  private loadInitialHeroes(): void {
-    fetch('assets/json/heroes.json')
-      .then(response => response.json())
-      .then(heroes => this.heroes$.next(heroes))
-      .catch(error => console.error('Error loading heroes:', error));
+  private async loadInitialHeroes(): Promise<void> {
+    const storedHeroes = localStorage.getItem('heroes');
+    if (storedHeroes && storedHeroes !== '[]') {
+      this.heroes$.next(JSON.parse(storedHeroes));
+    } else {
+      try {
+        const response = await fetch('assets/json/heroes.json');
+        const heroes = await response.json();
+        this.heroes$.next(heroes);
+        localStorage.setItem('heroes', JSON.stringify(heroes));
+      } catch (error) {
+        console.error('Error loading heroes:', error);
+      }
+    }
   }
 
   getHeroes(): Observable<Hero[]> {
     return this.heroes$.asObservable();
   }
 
+  getHero(id: number): Observable<Hero | undefined> {
+    const hero = this.heroes$.value.find(h => h.id === id);
+    return of(hero);
+  }
+
   addHero(hero: Hero): Observable<void> {
     const heroes = this.heroes$.value;
     hero.id = heroes.length ? Math.max(...heroes.map(h => h.id)) + 1 : 1;
-    this.heroes$.next([...heroes, hero]);
-    return new BehaviorSubject<void>(undefined).asObservable();
+    const updatedHeroes = [...heroes, hero];
+    this.heroes$.next(updatedHeroes);
+    localStorage.setItem('heroes', JSON.stringify(updatedHeroes));
+    return of(undefined);
   }
 
   updateHero(hero: Hero): Observable<void> {
     const heroes = this.heroes$.value.map(h => h.id === hero.id ? hero : h);
     this.heroes$.next(heroes);
-    return new BehaviorSubject<void>(undefined).asObservable();
+    localStorage.setItem('heroes', JSON.stringify(heroes));
+    return of(undefined);
   }
 
   deleteHero(id: number): Observable<void> {
     const heroes = this.heroes$.value.filter(h => h.id !== id);
     this.heroes$.next(heroes);
-    return new BehaviorSubject<void>(undefined).asObservable();
+    localStorage.setItem('heroes', JSON.stringify(heroes));
+    return of(undefined);
   }
 
   searchHeroes(term: string): Observable<Hero[]> {
@@ -51,6 +68,6 @@ export class HeroService {
       h.power.toLowerCase().includes(lowerTerm) ||
       h.universe.toLowerCase().includes(lowerTerm)
     );
-    return new BehaviorSubject<Hero[]>(heroes).asObservable();
+    return of(heroes);
   }
 }

@@ -9,7 +9,7 @@ import { Hero } from '../../models/hero.model';
 import { HeroService } from '../../services/hero.service';
 import { LoadingService } from '../../services/loading.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { HeroFormComponent } from '../hero-form/hero-form.component';
+import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -56,6 +56,7 @@ export class HeroListComponent implements OnInit {
     private heroService: HeroService,
     private dialog: MatDialog,
     private loadingService: LoadingService,
+    private router: Router,
     private cdr: ChangeDetectorRef
   ) { }
 
@@ -114,31 +115,11 @@ export class HeroListComponent implements OnInit {
   }
 
   addHero() {
-    const dialogRef = this.dialog.open(HeroFormComponent, {
-      width: '500px',
-      panelClass: 'custom-dialog-container',
-      data: { mode: 'add' }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loadHeroes();
-      }
-    });
+    this.router.navigate(['/hero', 'new']);
   }
 
   editHero(hero: Hero) {
-    const dialogRef = this.dialog.open(HeroFormComponent, {
-      width: '500px',
-      panelClass: 'custom-dialog-container',
-      data: { mode: 'edit', hero }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loadHeroes();
-      }
-    });
+    this.router.navigate(['/hero', hero.id]);
   }
 
   deleteHero(hero: Hero) {
