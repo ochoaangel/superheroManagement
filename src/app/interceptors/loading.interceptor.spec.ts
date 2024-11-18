@@ -54,7 +54,7 @@ describe('LoadingInterceptor', () => {
     const req = httpMock.expectOne('/test');
     expect(loadingService.show).toHaveBeenCalled();
 
-    req.flush({}); // Simulate response
+    req.flush({});
 
     expect(loadingService.hide).toHaveBeenCalled();
   });

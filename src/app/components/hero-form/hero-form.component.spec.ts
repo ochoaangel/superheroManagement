@@ -215,40 +215,33 @@ describe('HeroFormComponent', () => {
     it('should validate required fields', () => {
       const form = component.heroForm;
       
-      // Initially form should be invalid
       expect(form.valid).toBeFalsy();
 
-      // Name validation
       const nameControl = form.get('name');
       expect(nameControl?.errors?.['required']).toBeTruthy();
       nameControl?.setValue('Batman');
       expect(nameControl?.errors?.['required']).toBeFalsy();
 
-      // Name length validation
       nameControl?.setValue('Ba');
       expect(nameControl?.errors?.['minlength']).toBeTruthy();
       nameControl?.setValue('Batman');
       expect(nameControl?.errors?.['minlength']).toBeFalsy();
 
-      // AlterEgo validation
       const alterEgoControl = form.get('alterEgo');
       expect(alterEgoControl?.errors?.['required']).toBeTruthy();
       alterEgoControl?.setValue('Bruce Wayne');
       expect(alterEgoControl?.errors?.['required']).toBeFalsy();
 
-      // Power validation
       const powerControl = form.get('power');
       expect(powerControl?.errors?.['required']).toBeTruthy();
       powerControl?.setValue('Intelligence');
       expect(powerControl?.errors?.['required']).toBeFalsy();
 
-      // Universe validation
       const universeControl = form.get('universe');
       expect(universeControl?.errors?.['required']).toBeTruthy();
       universeControl?.setValue('DC');
       expect(universeControl?.errors?.['required']).toBeFalsy();
 
-      // Form should be valid when all required fields are filled
       expect(form.valid).toBeTruthy();
     });
   });

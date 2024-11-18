@@ -8,7 +8,6 @@ describe('HeroService', () => {
   let mockHeroes: Hero[];
 
   beforeEach(() => {
-    // Clear localStorage before each test
     localStorage.clear();
 
     mockHeroes = [
