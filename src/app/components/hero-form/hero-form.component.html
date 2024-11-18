@@ -41,7 +41,7 @@
     <div style="margin-top: 20px;">
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="name" appUppercaseInput>
         <mat-error *ngIf="heroForm.get('name')?.hasError('required')">
           El nombre es requerido
         </mat-error>
