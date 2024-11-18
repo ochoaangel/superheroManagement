@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Spider-Man",
+        "name": "SPIDER-MAN",
         "alterEgo": "Peter Parker",
         "power": "Spider abilities",
         "universe": "Marvel",
@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "name": "Batman",
+        "name": "BATMAN",
         "alterEgo": "Bruce Wayne",
         "power": "Martial arts",
         "universe": "DC",
@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "name": "Superman",
+        "name": "SUPERMAN",
         "alterEgo": "Clark Kent",
         "power": "Superhuman strength, flight, invulnerability",
         "universe": "DC",
@@ -25,7 +25,7 @@
     },
     {
         "id": 4,
-        "name": "Wonder Woman",
+        "name": "WONDER WOMAN",
         "alterEgo": "Diana Prince",
         "power": "Superhuman strength, agility, flight",
         "universe": "DC",
@@ -33,7 +33,7 @@
     },
     {
         "id": 5,
-        "name": "Iron Man",
+        "name": "IRON MAN",
         "alterEgo": "Tony Stark",
         "power": "Powered armor suit",
         "universe": "Marvel",
@@ -41,7 +41,7 @@
     },
     {
         "id": 6,
-        "name": "Captain America",
+        "name": "CAPTAIN AMERICA",
         "alterEgo": "Steve Rogers",
         "power": "Enhanced strength, agility, endurance",
         "universe": "Marvel",
@@ -49,7 +49,7 @@
     },
     {
         "id": 7,
-        "name": "Thor",
+        "name": "THOR",
         "alterEgo": "Thor Odinson",
         "power": "God of Thunder, superhuman strength, control over lightning",
         "universe": "Marvel",
@@ -57,7 +57,7 @@
     },
     {
         "id": 8,
-        "name": "Hulk",
+        "name": "HULK",
         "alterEgo": "Bruce Banner",
         "power": "Superhuman strength, invulnerability",
         "universe": "Marvel",
@@ -65,7 +65,7 @@
     },
     {
         "id": 9,
-        "name": "Black Widow",
+        "name": "BLACK WIDOW",
         "alterEgo": "Natasha Romanoff",
         "power": "Expert spy, martial artist",
         "universe": "Marvel",
@@ -73,7 +73,7 @@
     },
     {
         "id": 10,
-        "name": "Aquaman",
+        "name": "AQUAMAN",
         "alterEgo": "Arthur Curry",
         "power": "Control over aquatic life, superhuman strength",
         "universe": "DC",
@@ -81,7 +81,7 @@
     },
     {
         "id": 11,
-        "name": "Flash",
+        "name": "FLASH",
         "alterEgo": "Barry Allen",
         "power": "Super speed",
         "universe": "DC",
@@ -89,7 +89,7 @@
     },
     {
         "id": 12,
-        "name": "Green Lantern",
+        "name": "GREEN LANTERN",
         "alterEgo": "Hal Jordan",
         "power": "Power ring that grants flight, constructs, and other abilities",
         "universe": "DC",
@@ -97,7 +97,7 @@
     },
     {
         "id": 13,
-        "name": "Wolverine",
+        "name": "WOLVERINE",
         "alterEgo": "Logan",
         "power": "Regenerative healing, adamantium claws",
         "universe": "Marvel",
@@ -105,7 +105,7 @@
     },
     {
         "id": 14,
-        "name": "Doctor Strange",
+        "name": "DOCTOR STRANGE",
         "alterEgo": "Stephen Strange",
         "power": "Mastery of magic",
         "universe": "Marvel",
@@ -113,7 +113,7 @@
     },
     {
         "id": 15,
-        "name": "Black Panther",
+        "name": "BLACK PANTHER",
         "alterEgo": "T'Challa",
         "power": "Enhanced strength, agility, senses",
         "universe": "Marvel",
@@ -121,7 +121,7 @@
     },
     {
         "id": 16,
-        "name": "Cyborg",
+        "name": "CYBORG",
         "alterEgo": "Victor Stone",
         "power": "Cybernetic enhancements",
         "universe": "DC",
@@ -129,7 +129,7 @@
     },
     {
         "id": 17,
-        "name": "Scarlet Witch",
+        "name": "SCARLET WITCH",
         "alterEgo": "Wanda Maximoff",
         "power": "Reality warping, magic",
         "universe": "Marvel",
@@ -137,7 +137,7 @@
     },
     {
         "id": 18,
-        "name": "Green Arrow",
+        "name": "GREEN ARROW",
         "alterEgo": "Oliver Queen",
         "power": "Expert archer, martial artist",
         "universe": "DC",
@@ -145,7 +145,7 @@
     },
     {
         "id": 19,
-        "name": "Daredevil",
+        "name": "DAREDEVIL",
         "alterEgo": "Matt Murdock",
         "power": "Enhanced senses, martial arts",
         "universe": "Marvel",
@@ -153,7 +153,7 @@
     },
     {
         "id": 20,
-        "name": "Ant-Man",
+        "name": "ANT-MAN",
         "alterEgo": "Scott Lang",
         "power": "Size manipulation, communication with insects",
         "universe": "Marvel",
@@ -161,7 +161,7 @@
     },
     {
         "id": 21,
-        "name": "Hawkeye",
+        "name": "HAWKEYE",
         "alterEgo": "Clint Barton",
         "power": "Expert archer, martial artist",
         "universe": "Marvel",
@@ -169,7 +169,7 @@
     },
     {
         "id": 22,
-        "name": "Vision",
+        "name": "VISION",
         "alterEgo": "Vision",
         "power": "Density manipulation, superhuman strength",
         "universe": "Marvel",
@@ -177,7 +177,7 @@
     },
     {
         "id": 23,
-        "name": "Star-Lord",
+        "name": "STAR-LORD",
         "alterEgo": "Peter Quill",
         "power": "Expert marksman, skilled hand-to-hand combatant",
         "universe": "Marvel",
@@ -185,7 +185,7 @@
     },
     {
         "id": 24,
-        "name": "Shazam",
+        "name": "SHAZAM",
         "alterEgo": "Billy Batson",
         "power": "Superhuman strength, speed, flight",
         "universe": "DC",
@@ -193,7 +193,7 @@
     },
     {
         "id": 25,
-        "name": "Supergirl",
+        "name": "SUPERGIRL",
         "alterEgo": "Kara Zor-El",
         "power": "Superhuman strength, flight, invulnerability",
         "universe": "DC",
@@ -201,7 +201,7 @@
     },
     {
         "id": 26,
-        "name": "Nightwing",
+        "name": "NIGHTWING",
         "alterEgo": "Dick Grayson",
         "power": "Expert acrobat, martial artist",
         "universe": "DC",
@@ -209,7 +209,7 @@
     },
     {
         "id": 27,
-        "name": "Storm",
+        "name": "STORM",
         "alterEgo": "Ororo Munroe",
         "power": "Weather manipulation",
         "universe": "Marvel",
