@@ -12,13 +12,14 @@ A web application for managing superheroes, built with Angular v18.2 and Angular
 2. Installation
 3. Usage
 4. Features
-5. Contributing
-6. License
-7. Authors and Acknowledgments
-8. Contact
-9. Project Status
-10. Additional Resources
-11. Images
+5. Uppercase Input Directive
+6. Contributing
+7. License
+8. Authors and Acknowledgments
+9. Contact
+10. Project Status
+11. Additional Resources
+12. Images
 
 ## Description
 Superhero Management is an Angular-based application designed to help users manage a list of superheroes. Users can add, edit, delete, and search for superheroes, as well as view detailed information about each hero.
@@ -81,6 +82,11 @@ npm run coverage
 - **Uppercase directive**: Ensure the hero name is always displayed in uppercase when creating or editing.
 - **Event-driven communication**: Use event-driven communication between components.
 
+
+## Uppercase Input Directive
+The `UppercaseInputDirective` provides a flexible solution for automatically converting text to uppercase in real-time, enhancing user experience. Unlike Angular's built-in `UpperCasePipe`, which only affects the displayed text, this directive directly modifies the value of the input field. This enables more dynamic interactions, as the user sees the uppercase version while typing.
+
+By leveraging Angular's event handling and DOM manipulation capabilities, the directive offers an efficient and organized way to handle uppercase text input.
 
 ## Contributing
 Contributions are welcome! Please follow these steps to contribute:
